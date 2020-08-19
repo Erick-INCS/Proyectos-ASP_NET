@@ -1,0 +1,63 @@
+﻿@model ControlInventario.Models.Supplier
+
+@{
+    ViewBag.Title = "Detalles del proveedor";
+}
+    <div class="masthead">
+        <div class="masthead-content space">
+
+            <div class="container">
+                @*<h2>Details</h2>*@
+
+                <div>
+                    <h4>@ViewBag.Title</h4>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @*@Html.DisplayNameFor(model => model.SupplierCode)*@ Código del proveedor
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.SupplierCode)
+                        </dd>
+
+                        <dt>
+                            @*@Html.DisplayNameFor(model => model.SupplierName)*@ Nombre
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.SupplierName)
+
+                        <dt>
+                            @*@Html.DisplayNameFor(model => model.Email)*@ Correo
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Email)
+                        </dd>
+
+                        <dt>
+                            @*@Html.DisplayNameFor(model => model.Phone)*@ Teléfono
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Phone)
+                        </dd>
+
+                        <dt>
+                            @*@Html.DisplayNameFor(model => model.Address)*@ Dirección
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Address) Dirección
+                        </dd>
+
+                    </dl>
+                </div>
+                <p>
+                    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class="btn btn-outline-success"}) <br />
+                    @Html.ActionLink("Regresar a la lista", "Index")
+                </p>
+            </div>
+        </div>
+    </div>

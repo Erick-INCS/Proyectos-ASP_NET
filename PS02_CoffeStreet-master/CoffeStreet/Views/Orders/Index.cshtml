@@ -1,0 +1,62 @@
+﻿@model IEnumerable<CoffeStreet.Models.Order>
+
+@{
+    ViewBag.Title = "Pedidos";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="normal-table-list">
+    <div class="basic-tb-hd">
+        <h2>Ordenes pendientes</h2>
+    </div>
+    <div class="bsc-tbl">
+        <table class="table table-sc-ex">
+            <thead>
+            <th>
+                @Html.DisplayNameFor(model => model.Product.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClientName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Product.ProductName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ClientName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Quantity)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Edit", "Orders", new { id = item.Id})" class="btn btn-default btn-icon-notika waves-effect">
+                                <i class="notika-icon notika-edit"></i>
+                            </a>
+                            <a href="@Url.Action("Details", "Orders", new { id = item.Id})" class="btn btn-default btn-icon-notika waves-effect">
+                                <i class="notika-icon notika-eye"></i>
+                            </a>
+                            <a href="@Url.Action("Delete", "Orders", new { id = item.Id})" class="btn btn-default btn-icon-notika waves-effect">
+                                <i class="notika-icon notika-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

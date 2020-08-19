@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNet.Identity
+
+@if (Request.IsAuthenticated)
+{
+        <div class="col-4 d-flex justify-content-end align-items-center">
+            <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-sm btn-outline-secondary"> <i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+        </div>
+
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @*@Html.ActionLink(User.Identity.GetUserName() + " - ", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "text-white-50" })*@
+    }
+}
+else
+{
+    <div class="col-4 d-flex justify-content-end align-items-center">
+        <a class="btn btn-sm btn-outline-secondary" href="@Url.Action("Login", "Account")">Iniciar sesión</a>
+    </div>
+
+    @*<ul class="nav navbar-nav navbar-right">
+            <li>@Html.ActionLink("Registro", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink",@class="text-white-50 btn btn-sm" })</li>
+            <li>@Html.ActionLink("Inicio de Sesion", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "text-white-50 btn btn-sm" })</li>
+        </ul>*@
+}

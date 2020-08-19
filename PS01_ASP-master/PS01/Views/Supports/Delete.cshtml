@@ -1,0 +1,57 @@
+﻿@model PS01.Models.Support
+
+@{
+    ViewBag.Title = "Eliminar soporte";
+}
+
+
+
+<section id="contact" class="contact">
+    <div class="container info">
+
+        <div class="section-title">
+            <span>@ViewBag.Title</span>
+            <h2>@ViewBag.Title</h2>
+            ¿Desea aliminar el soporte?
+        </div>
+
+        <dl class="dl-horizontal">
+            <dt>
+                Fecha
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
+
+            <dt>
+                Descripción del problema
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ProblemDescription)
+            </dd>
+
+            <dt>
+                Solución
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Solution)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Eliminar" class="btn btn-outline-danger" /> <br />
+                <br />@Html.ActionLink("Regresar a la lista", "Index")
+            </div>
+        }
+
+
+    </div>
+</section>

@@ -1,0 +1,73 @@
+﻿@model ControlInventario.Models.Supplier
+
+@{
+    ViewBag.Title = "Eliminar proveedor";
+}
+
+    <div class="masthead">
+        <div class="masthead-content space">
+
+            <div class="container">
+
+                <h2>@ViewBag.Title</h2>
+
+                <h3>¿Seguro que deseas eliminar?</h3>
+                <div>
+                    @*<h4>Supplier</h4>*@
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @*@Html.DisplayNameFor(model => model.SupplierCode)*@ Código
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.SupplierCode)
+                        </dd>
+
+                        <dt>
+                            @*@Html.DisplayNameFor(model => model.SupplierName)*@ Nombre
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.SupplierName)
+                        </dd>
+
+                        <dt>
+                            @*@Html.DisplayNameFor(model => model.Email)*@ Correo
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Email)
+                        </dd>
+
+                        <dt>
+                            @*@Html.DisplayNameFor(model => model.Phone)*@ Telefono
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Phone)
+                        </dd>
+
+                        <dt>
+                            @*@Html.DisplayNameFor(model => model.Address)*@ Dirección
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Address)
+                        </dd>
+
+                    </dl>
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Elminar" class="btn btn-outline-danger" /> |
+                            @Html.ActionLink("Regresar a la lista", "Index")
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>

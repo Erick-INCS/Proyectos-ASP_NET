@@ -1,0 +1,61 @@
+﻿@using Veterinaria.Web.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Inicio de Sesión";
+}
+
+    </div>
+
+<main role="main" class="container align-middle" style="height:70vh;">
+    <div class="row pt-5">
+
+
+        <div class="col-6 offset-3 pt-3 bg-light rounded p-4">
+            <h4 class="text-info mb-4">@ViewBag.Title</h4>
+
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <label class="col-md-5">Correo Electrónico</label>
+                    <div class="col-md-12">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-5">Contraseña</label>
+                    <div class="col-md-12">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="custom-control custom-checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe, new { @class = "custom-control-input" })
+                            <label class="custom-control-label" for="customCheck1">Recordarme</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button class="btn btn-outline-success">
+                            Iniciar Sesión
+                        </button>
+                        <a href="@Url.Action("Register","Account")" class="btn btn-outline-info">
+                            Registrarme
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</main>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

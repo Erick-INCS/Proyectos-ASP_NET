@@ -1,0 +1,39 @@
+﻿@model PS01.Models.ProductType
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<section id="contact" class="contact">
+    <div class="container info">
+
+        <div class="section-title">
+            <span>@ViewBag.Title</span>
+            <h2>@ViewBag.Title</h2>
+            ¿Seguro que desea eliminar este tipo?
+        </div>
+
+        <dl class="dl-horizontal">
+            <dt>
+                @*   @Html.DisplayNameFor(model => model.TypeName)*@Tipo de producto
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TypeName)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Eliminar" class="btn btn-outline-danger" /> <br /><br />
+                @Html.ActionLink("Regresar a la lista", "Index", null, new { @class = "btn btn-outline-info" })
+            </div>
+        }
+
+
+    </div>
+</section>

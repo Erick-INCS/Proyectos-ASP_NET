@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        <header class="blog-header py-3">
+            <div class="row flex-nowrap justify-content-between align-items-center">
+                <div class="col-4 pt-1">
+                </div>
+                <div class="col-4 text-center">
+                    <h4>
+                        <a class="blog-header-logo text-dark" href="@Url.Action("Index", "Principal")">Veterinaria Safret</a>
+                    </h4>
+                </div>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </header>
+
+        <div class="nav-scroller py-1 mb-2">
+            <nav class="nav d-flex justify-content-between">
+                <a class="p-2 text-muted" href="@Url.Action("About", "Home")">Sobre nosotros</a>
+                <a class="p-2 text-muted" href="@Url.Action("Contact", "Home")">Contáctanos</a>
+                @if (User.IsInRole("Admin"))
+                {
+                    <a class="p-2 text-muted" href="@Url.Action("Index", "Users")">Usuarios</a>
+                    <a class="p-2 text-muted" href="@Url.Action("Index", "Veterinary")">Medico veterinario</a>
+                }
+                @if (User.IsInRole("Veterinary") || User.IsInRole("Admin"))
+                {
+                    <a class="p-2 text-muted" href="@Url.Action("Index", "Consults")">Consultas</a>
+                }
+
+                @if (User.IsInRole("Owner"))
+                {
+                    <a class="p-2 text-muted" href="@Url.Action("Index","Pets")">
+                        <svg class="bi bi-heart" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                        </svg>
+                        Mascotas
+                    </a>
+                }
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <a class="p-2 text-muted" href="@Url.Action("AllPets","Pets")">
+                        <svg class="bi bi-heart" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                        </svg>
+                        Mascotas
+                    </a>
+                }
+            </nav>
+        </div>
+
+
+        @RenderBody()
+
+
+    <div class="bg-light p-4">
+        <div class="mx-auto" style="width: 300px;">
+            Copyright &copy; Veterinaria Safret @DateTime.Now.Year
+        </div>
+    </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+</body>
+</html>

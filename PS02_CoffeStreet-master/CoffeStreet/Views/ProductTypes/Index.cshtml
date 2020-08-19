@@ -1,0 +1,49 @@
+﻿@model IEnumerable<CoffeStreet.Models.ProductType>
+
+@{
+    ViewBag.Title = "Categorias";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="normal-table-list">
+    <div class="basic-tb-hd">
+        <h2>Categorías disponibles</h2>
+    </div>
+    <div class="bsc-tbl">
+        <table class="table table-sc-ex">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Type)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Type)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Edit", "ProductTypes", new { id = item.Type})" class="btn btn-default btn-icon-notika waves-effect">
+                                <i class="notika-icon notika-edit"></i>
+                            </a>
+                            <a href="@Url.Action("Delete", "ProductTypes", new { id = item.Type})" class="btn btn-default btn-icon-notika waves-effect">
+                                <i class="notika-icon notika-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

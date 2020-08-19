@@ -1,0 +1,58 @@
+﻿@model IEnumerable<PS01.Models.Support>
+
+@{
+    ViewBag.Title = "Soporte";
+}
+
+<section id="contact" class="contact">
+    <div class="container">
+
+        <div class="section-title">
+            <span>@ViewBag.Title</span>
+            <h2>@ViewBag.Title</h2>
+        </div>
+
+        <p>
+            @Html.ActionLink("Nuevo soporte", "Create", null, new { @class="btn btn-outline-success" })
+        </p>
+
+
+        <table class="table">
+            <tr>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.Date)*@ Fecha
+                </th>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.ProblemDescription)*@ Descripción del problema
+                </th>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.Solution)*@ Solución
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProblemDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Solution)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+
+    </div>
+</section>

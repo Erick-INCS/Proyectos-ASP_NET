@@ -1,0 +1,47 @@
+﻿@model CoffeStreet.Models.RegisterViewModel
+@using CoffeStreet.App_Code
+@{
+    ViewBag.Title = "Registrar";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+}
+
+<div class="row mt-2">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="form-element-list">
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <h4>@ViewBag.Title</h4>
+                @*<hr />*@
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+
+
+                using (@Html.AdmFormControl())
+                {
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Correo" })
+                }
+
+                using (@Html.AdmFormControl())
+                {
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Contraseña" })
+                }
+
+                using (@Html.AdmFormControl())
+                {
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirmar contraseña" })
+                }
+
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-offset-4 col-md-4 pr-3 col-4 justify-content-center">
+                            <button type="submit" class="btn-primary btn-md btn-block btn notika-add-todo waves-effect">Registrar</button>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+﻿@model ControlInventario.Models.Product
+
+@{
+    ViewBag.Title = "Detalles del producto";
+}
+
+<div class="masthead">
+    <div class="masthead-content space">
+
+        <div class="container">
+
+            <h2>@ViewBag.Title</h2>
+
+            <div>
+                @*<h4>Product</h4>*@
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @*@Html.DisplayNameFor(model => model.Supplier.SupplierCode)*@ Código del proveedor
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Supplier.SupplierCode)
+                    </dd>
+
+                    <dt>
+                        @*@Html.DisplayNameFor(model => model.ProductCode)*@ Código del producto
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ProductCode)
+                    </dd>
+
+                    <dt>
+                        @*@Html.DisplayNameFor(model => model.ProductName)*@ Producto
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ProductName)
+                    </dd>
+
+                    <dt>
+                        @*@Html.DisplayNameFor(model => model.Description)*@ Descripción
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
+
+                    <dt>
+                        @*@Html.DisplayNameFor(model => model.Quantity)*@ Cantidad
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Quantity)
+                    </dd>
+
+                    <dt>
+                        @*@Html.DisplayNameFor(model => model.Price)*@ Precio
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Price)
+                    </dd>
+
+                </dl>
+            </div>
+            <p>
+                @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class="btn btn-outline-success" }) <br />
+                @Html.ActionLink("Regresar a la lista", "Index")
+            </p>
+        </div>
+    </div>
+</div>

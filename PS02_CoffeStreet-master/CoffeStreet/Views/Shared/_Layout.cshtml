@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Coffe Perso</title>
+    @*@Styles.Render("~/Content/css")*@
+    @*@Scripts.Render("~/bundles/modernizr")*@
+
+    <!-- mobile responsive meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- ** Plugins Needed for the Project ** -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="~/Content/bootstrapT.min.css">
+    <!-- slick slider -->
+    <link rel="stylesheet" href="~/Content/plugins/slick/slick.css">
+    <!-- themefy-icon -->
+    <link rel="stylesheet" href="~/Content/plugins/themify-icons/themify-icons.css">
+
+    <!-- Main Stylesheet -->
+    <link href="~/Content/style.css" rel="stylesheet">
+
+    <!--Favicon-->
+    @*<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">*@
+    @*<link rel="icon" href="images/favicon.ico" type="image/x-icon">*@
+
+</head>
+<body>
+    <!-- preloader -->
+    <div class="preloader">
+        <div class="loader">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- /preloader -->
+
+    <header class="navigation">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")"><img class="img-fluid" src="~/Content/img/logo.png" alt="parsa"></a>
+            <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navogation"
+                    aria-controls="navogation" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse text-center" id="navogation">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-uppercase text-dark dropdown-toggle" href="#" id="navbarDropdown"
+                           role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Menu
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @foreach (CoffeStreet.Models.ProductType pt in ViewData["categories"] as List<CoffeStreet.Models.ProductType>)
+                            {
+                                <a class="dropdown-item" href="@Url.Action("Details", "Catalog", new { category = pt.Type })">@pt.Type</a>
+                            }
+                            @*<a class="dropdown-item" href="index.html">Para tomar</a>
+        <a class="dropdown-item" href="homepage-2.html">Hecho a mano</a>
+        <a class="dropdown-item" href="homepage-2.html">Te</a>
+        <a class="dropdown-item" href="homepage-2.html">Fríos</a>*@
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase text-dark" href="about.html">Sobre nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase text-dark" href="@Url.Action("Login","Account")">
+                            <svg class="bi bi-star-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    @RenderBody()
+
+
+
+    <footer class="bg-secondary">
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
+                        <a href="index.html"><img src="~/Content/img/logo.png" alt="persa" class="img-fluid"></a>
+                    </div>
+                    <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
+                        <h6>Dirección</h6>
+                        <ul class="list-unstyled">
+                            <li class="font-secondary text-dark">Sydney</li>
+                            <li class="font-secondary text-dark">6 rip carl Avenue CA 90733</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
+                        <h6>Contacto</h6>
+                        <ul class="list-unstyled">
+                            <li class="font-secondary text-dark">Tel: +90 000 333 22</li>
+                            <li class="font-secondary text-dark">Mail: exmaple@ymail.com</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
+                        <h6>Síguenos</h6>
+                        <ul class="list-inline d-inline-block">
+                            <li class="list-inline-item"><a href="#" class="text-dark"><i class="ti-facebook"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class="text-dark"><i class="ti-twitter-alt"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class="text-dark"><i class="ti-linkedin"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class="text-dark"><i class="ti-github"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center pb-3">
+            <p class="mb-0">
+                Copyright &copy; @DateTime.Now.Year - Perso Coffe
+            </p>
+        </div>
+    </footer>
+
+    @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>@Html.ActionLink("About", "About", "Home")</li>
+        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+        @Html.Partial("_LoginPartial")
+    *@
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <!-- jQuery -->
+    @*<script src="~/Scripts/jquery-3.4.1.min.js"></script>*@
+    <!-- Bootstrap JS -->
+    @*<script src="~/Scripts/bootstrap.min.js"></script>*@
+    <!-- slick slider -->
+    <script src="~/Content/plugins/slick/slick.min.js"></script>
+    <!-- masonry -->
+    <script src="~/Content/plugins/masonry/masonry.js"></script>
+    <!-- instafeed -->
+    <script src="~/Content/plugins/instafeed/instafeed.min.js"></script>
+    <!-- smooth scroll -->
+    <script src="~/Content/plugins/smooth-scroll/smooth-scroll.js"></script>
+    <!-- headroom -->
+    <script src="~/Content/plugins/headroom/headroom.js"></script>
+    <!-- reading time -->
+    <script src="~/Content/plugins/reading-time/readingTime.min.js"></script>
+
+    <!-- Main Script -->
+    <script src="~/Scripts/script.js"></script>
+
+
+
+
+</body>
+</html>
